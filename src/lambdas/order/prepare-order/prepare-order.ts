@@ -1,4 +1,4 @@
-const aws = require('aws-sdk');
+const SNS = require('aws-sdk/clients/sns');
 
 const AWS_ACCOUNT_REGION = process.env.AWS_ACCOUNT_REGION;
 const DISH_DONE_SNS_TOPIC = process.env.DISH_DONE_SNS_TOPIC;
@@ -18,7 +18,7 @@ export const handler = async (event: any) : Promise<void> => {
 
 const notifyOrderDone = async (orderInformation : Object) => {
 
-    let sns = new aws.SNS({
+    let sns = new SNS({
       region: AWS_ACCOUNT_REGION
     });
   
